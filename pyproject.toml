@@ -1,0 +1,15 @@
+[project]
+name = "evinventory"
+version = "0.1.0"
+description = "A simple Django app to record my stuff"
+authors = [
+    {name = "Evan Porter", email = "evan.porter@dotman.ca"},
+]
+dependencies = []
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
