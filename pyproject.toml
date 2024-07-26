@@ -20,4 +20,10 @@ distribution = false
 [tool.pdm.scripts]
 server.cmd = "python src/manage.py runserver"
 server.env_file = ".env"
-generate-key = "python src/manage.py shell -c \"from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())\""
+generate-key = {cmd = [
+    "python",
+    "src/manage.py",
+    "shell",
+    "-c",
+    "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+], help = "Generates a secure, secret key"}
