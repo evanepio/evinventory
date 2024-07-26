@@ -18,5 +18,16 @@ license = {text = "MIT"}
 distribution = false
 
 [tool.pdm.scripts]
+manage.cmd = "python src/manage.py"
+manage.env_file = ".env"
+manage.help = "Runs the Django project management script"
 server.cmd = "python src/manage.py runserver"
 server.env_file = ".env"
+server.help = "Runs the development server"
+generate-key = {cmd = [
+    "python",
+    "src/manage.py",
+    "shell",
+    "-c",
+    "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+], help = "Generates a secure, secret key"}
