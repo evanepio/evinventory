@@ -20,6 +20,7 @@ distribution = false
 [tool.pdm.scripts]
 server.cmd = "python src/manage.py runserver"
 server.env_file = ".env"
+server.help = "Runs the development server"
 generate-key = {cmd = [
     "python",
     "src/manage.py",
