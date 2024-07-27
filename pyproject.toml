@@ -15,7 +15,7 @@ license = {text = "MIT"}
 
 
 [tool.pdm]
-distribution = false
+distribution = true # Needs to be true to have an 'editable' install
 
 [tool.pdm.scripts]
 manage.cmd = "python src/manage.py"
