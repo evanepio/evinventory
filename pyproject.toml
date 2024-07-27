@@ -21,9 +21,11 @@ distribution = true # Needs to be true to have an 'editable' install
 manage.cmd = "python src/manage.py"
 manage.env_file = ".env"
 manage.help = "Runs the Django project management script"
+
 server.cmd = "python src/manage.py runserver"
 server.env_file = ".env"
 server.help = "Runs the development server"
+
 generate-key = {cmd = [
     "python",
     "src/manage.py",
