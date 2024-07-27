@@ -26,6 +26,10 @@ server.cmd = "python src/manage.py runserver"
 server.env_file = ".env"
 server.help = "Runs the development server"
 
+django-admin.shell = "cd src; django-admin"
+django-admin.env_file = ".env"
+django-admin.help = "Runs the Django Admin script"
+
 generate-key = {cmd = [
     "python",
     "src/manage.py",
