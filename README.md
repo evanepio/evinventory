@@ -10,8 +10,8 @@ You need to create an `.env` file:
 
 ```
 DJANGO_SETTINGS_MODULE=evinventory.settings
-DEBUG=True
-SECRET_KEY=ThisShouldBeSuperSecretAndGeneratedFromScratch
+EVAN_DEBUG=True
+EVAN_SECRET_KEY=ThisShouldBeSuperSecretAndGeneratedFromScratch
 ```
 
 If you want to generate a secret key for the `.env` file, just run the following:

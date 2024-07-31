@@ -13,9 +13,16 @@ requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
 
-
 [tool.pdm]
 distribution = true # Needs to be true to have an 'editable' install
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest-django>=4.8.0",
+]
+lint = [
+    "ruff>=0.5.5",
+]
 
 [tool.pdm.scripts]
 manage.cmd = "python src/manage.py"
@@ -38,3 +45,26 @@ generate-key.cmd = [
     "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ]
 generate-key.help = "Generates a secure, secret key"
+
+lint.cmd = "ruff check ."
+lint.help = "Runs `ruff` to check for format issues"
+
+[tool.ruff]
+exclude = [
+    ".git",
+    "*/migrations/*",
+    "*/settings/*",
+    "*/static/CACHE/*",
+    "docs",
+]
+line-length = 120
+
+[tool.ruff.lint]
+ignore = []
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "N",
+]
