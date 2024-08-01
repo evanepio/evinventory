@@ -38,10 +38,7 @@ django-admin.env_file = ".env"
 django-admin.help = "Runs the Django Admin script"
 
 generate-key.cmd = [
-    "python",
-    "src/manage.py",
-    "shell",
-    "-c",
+    "python", "src/manage.py", "shell", "-c",
     "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ]
 generate-key.help = "Generates a secure, secret key"
@@ -61,10 +58,4 @@ line-length = 120
 
 [tool.ruff.lint]
 ignore = []
-select = [
-    "E",
-    "F",
-    "W",
-    "I",
-    "N",
-]
+select = [ "E", "F", "W", "I", "N", ]
