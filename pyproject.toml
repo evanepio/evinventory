@@ -43,8 +43,15 @@ generate-key.cmd = [
 ]
 generate-key.help = "Generates a secure, secret key"
 
+test.cmd = "pytest"
+test.env_file = ".env" # temporary until I split settings module
+test.help = "Runs `pytest`"
+
 lint.cmd = "ruff check ."
 lint.help = "Runs `ruff` to check for format issues"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "evinventory.settings" # temporary until I split settings module
 
 [tool.ruff]
 exclude = [
