@@ -19,6 +19,8 @@ distribution = true # Needs to be true to have an 'editable' install
 [tool.pdm.dev-dependencies]
 test = [
     "pytest-django>=4.8.0",
+    "coverage>=7.6.0",
+    "django-coverage-plugin>=3.1.0",
 ]
 lint = [
     "ruff>=0.5.5",
@@ -50,6 +52,18 @@ test.help = "Runs `pytest`"
 lint.cmd = "ruff check ."
 lint.help = "Runs `ruff` to check for format issues"
 
+coverage-generate.cmd = "coverage run -m pytest"
+coverage-generate.env_file = ".env" # temporary until I split settings module
+coverage-generate.help = "Runs `coverage` to generate coverage data"
+
+coverage-report.cmd = "coverage html"
+coverage-report.env_file = ".env" # temporary until I split settings module
+coverage-report.help = "Runs `coverage html` to generate an HTML report from coverage data"
+
+coverage.composite = ['coverage-generate', 'coverage-report']
+coverage.env_file = ".env" # temporary until I split settings module
+coverage.help = "Runs runs tests and generates a coverage report"
+
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "evinventory.settings" # temporary until I split settings module
 
@@ -66,3 +80,8 @@ line-length = 120
 [tool.ruff.lint]
 ignore = []
 select = [ "E", "F", "W", "I", "N", ]
+
+[tool.coverage.run]
+include = ["src/*"]
+omit = ["*migrations*", "*tests*"]
+plugins = ["django_coverage_plugin"]
