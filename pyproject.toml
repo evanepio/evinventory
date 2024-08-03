@@ -28,15 +28,15 @@ lint = [
 
 [tool.pdm.scripts]
 manage.cmd = "python src/manage.py"
-manage.env_file = ".env"
+manage.env_file.override = ".env"
 manage.help = "Runs the Django project management script"
 
 server.cmd = "python src/manage.py runserver"
-server.env_file = ".env"
+server.env_file.override = ".env"
 server.help = "Runs the development server"
 
 django-admin.shell = "cd src; django-admin"
-django-admin.env_file = ".env"
+django-admin.env_file.override = ".env"
 django-admin.help = "Runs the Django Admin script"
 
 generate-key.cmd = [
@@ -46,26 +46,26 @@ generate-key.cmd = [
 generate-key.help = "Generates a secure, secret key"
 
 test.cmd = "pytest"
-test.env_file = ".env" # temporary until I split settings module
+test.env = {DJANGO_SETTINGS_MODULE = "evinventory.django.test", EVAN_DEBUG = "True"}
 test.help = "Runs `pytest`"
 
 lint.cmd = "ruff check ."
 lint.help = "Runs `ruff` to check for format issues"
 
 coverage-generate.cmd = "coverage run -m pytest"
-coverage-generate.env_file = ".env" # temporary until I split settings module
+coverage-generate.env = {DJANGO_SETTINGS_MODULE = "evinventory.django.test", EVAN_DEBUG = "True"}
 coverage-generate.help = "Runs `coverage` to generate coverage data"
 
 coverage-report.cmd = "coverage html"
-coverage-report.env_file = ".env" # temporary until I split settings module
+coverage-report.env = {DJANGO_SETTINGS_MODULE = "evinventory.django.test", EVAN_DEBUG = "True"}
 coverage-report.help = "Runs `coverage html` to generate an HTML report from coverage data"
 
 coverage.composite = ['coverage-generate', 'coverage-report']
-coverage.env_file = ".env" # temporary until I split settings module
+coverage.env = {DJANGO_SETTINGS_MODULE = "evinventory.django.test", EVAN_DEBUG = "True"}
 coverage.help = "Runs runs tests and generates a coverage report"
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "evinventory.settings" # temporary until I split settings module
+DJANGO_SETTINGS_MODULE = "evinventory.django.local"
 
 [tool.ruff]
 exclude = [

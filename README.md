@@ -9,7 +9,7 @@ brew install pdm
 You need to create an `.env` file:
 
 ```
-DJANGO_SETTINGS_MODULE=evinventory.settings
+DJANGO_SETTINGS_MODULE=evinventory.django.local
 EVAN_DEBUG=True
 EVAN_SECRET_KEY=ThisShouldBeSuperSecretAndGeneratedFromScratch
 ```
