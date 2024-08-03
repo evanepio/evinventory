@@ -1,0 +1,56 @@
+name: Continuous Integration
+on: pull_request
+
+jobs:
+  tests:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@0d381219ddf674d61a7572ddd19d7941e271515c # v2.9.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            files.pythonhosted.org:443
+            github.com:443
+            pypi.org:443
+            api.github.com:443
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: 3.12
+          cache: true
+          cache-dependency-path: '**/pdm.lock'
+      - name: Install dependencies
+        run: pdm sync
+      - name: Run pytest
+        run: pdm run lint
+  lint:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@0d381219ddf674d61a7572ddd19d7941e271515c # v2.9.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            files.pythonhosted.org:443
+            github.com:443
+            pypi.org:443
+            api.github.com:443
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: Setup PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: 3.12
+          cache: true
+          cache-dependency-path: '**/pdm.lock'
+      - name: Install dependencies
+        run: pdm sync
+      - name: Run linter
+        run: pdm run lint
