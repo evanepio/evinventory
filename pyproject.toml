@@ -28,15 +28,15 @@ lint = [
 
 [tool.pdm.scripts]
 manage.cmd = "python src/manage.py"
-manage.env_file = ".env"
+manage.env_file.override = ".env"
 manage.help = "Runs the Django project management script"
 
 server.cmd = "python src/manage.py runserver"
-server.env_file = ".env"
+server.env_file.override = ".env"
 server.help = "Runs the development server"
 
 django-admin.shell = "cd src; django-admin"
-django-admin.env_file = ".env"
+django-admin.env_file.override = ".env"
 django-admin.help = "Runs the Django Admin script"
 
 generate-key.cmd = [
