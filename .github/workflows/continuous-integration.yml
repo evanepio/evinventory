@@ -17,6 +17,7 @@ jobs:
             github.com:443
             pypi.org:443
             api.github.com:443
+            54.185.253.63:443
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup PDM
         uses: pdm-project/setup-pdm@v4
@@ -43,6 +44,7 @@ jobs:
             github.com:443
             pypi.org:443
             api.github.com:443
+            54.185.253.63:443
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup PDM
         uses: pdm-project/setup-pdm@v4
